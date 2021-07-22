@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Configurações de conta </title>
+        <link href="CSS/layout.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- Padronização do cabeçalho do site -->
+        <div class="divCabecalho">
+            <!-- Imagem e nome do logo do Plater -->
+            <img class="imgLogo" src="./Imagens/Logo pote laranja.png" alt="Logo Plater - crie para ir até a página Home"/>
+            <label class="nomeLogo"> Plater </label>
+            
+            <!-- Barra de pesquisa (input + imagem de lupa) -->
+            <div class="divSearchBar">
+                <input class="iptBusca" type="text" placeholder="Buscar receita..."></input>
+                <img class="imgBusca" src="https://img.icons8.com/ios/50/000000/search--v1.png" alt="lupa"/>
+            </div>
+
+            <!-- Informações do usuário logado -->
+            <div class="divUserLogado">
+                <label class="lbLogout"> Sair </label>
+                <img class="imgUserFoto" src="https://img.icons8.com/fluent-systems-filled/48/000000/user.png" alt="foto usuário"/>
+            </div>
+
+            <!-- Informações do usuário visitante -->
+            <div class="divUserGuest">
+                <label class="lbUserGuest" id="lbCadastrese"> Crie uma conta! </label>
+                <label class="lbUserGuest" id="lbLogin"> Login </label>
+            </div>
+        </div>
+        <!-- Cabeçalho da página atual-->
+        <div id="imgFundo">
+            <label> Configurações de conta </label>
+        </div>
+        <!-- Formulários para a alteração de dados do usuário -->
+        <div id="divFormAlterarDados">
+            <!-- Alterar informações de perfil -->
+            <div id="infoPerfilUser">
+                <!-- Alterar a foto do perfil-->
+                <h2> Foto de perfil </h2>
+                <img id="imgFoto" src="https://img.icons8.com/windows/96/000000/user-male-circle.png"/>
+                <img id="imgAlterarFoto" src="https://img.icons8.com/material-rounded/96/000000/plus--v1.png" onclick="adicionarNovaFoto()"/>
+                
+                <!-- Alterar identificações do usuário (nomes) -->
+                <h2> Identificação de usuário </h2>
+                <form>
+                    Alterar nome de usuário:
+                    <input type="text" placeholder="Novo nome de usuário"> </br>
+                    Alterar ID de usuário:
+                    <input type="text" placeholder="Novo ID de usuário"> </br> </br>
+                </form>
+            </div>
+             <!-- Alterar dados de conta (email e senha)-->
+            <div id="infoDadosUser">
+                <h2> Dados de conta e login </h2>
+                <!-- Alterar email -->
+                <div  id="alterarEmail">
+                    <h3> Alterar e-mail de cadastro </h3>
+                    <form>
+                        E-mail cadastrado atual:
+                        <input type="mail" placeholder="Novo e-mail"> </br>
+                        Novo e-mail de cadastro:
+                        <input type="mail" placeholder="Novo e-mail"> </br>
+                        Confirmar novo e-mail:
+                        <input type="mail" placeholder="Novo e-mail"> </br> </br>
+                    </form>
+                </div>
+                <!-- Alterar senha -->
+                <div id="alterarSenha">
+                    <h3> Alterar senha </h3>
+                    <form>
+                        Senha atual:
+                        <input type="password" placeholder="Nova senha"> </br>
+                        Nova senha:
+                        <input type="password" placeholder="Nova senha"> </br>
+                        Confirmar nova senha:
+                        <input type="password" placeholder="Nova senha"> </br></br>
+                    </form>
+                </div>
+                <div id="teste">
+                <!-- Alterar sistema de medidas padrão -->
+                <label> Sistema de medidas padrão: </label>
+                <select>
+                    <option value="metrico"> Métrico </option>
+                    <option value="imperial"> Imperial </option>
+                </select>
+                </div>
+            </div>
+        </div>
+        <div id="confirmarAlteracoes">
+            <!-- Essa div deverá exibir logs ao usuário, como se a alteração foi bem sucedida e procedimentos -->
+            <input type="checkbox"> Declaro que estou de acordo e totalmente ciente da mudança de meus dados de usuário </br>
+            <input type="button" value="Salvar alterações" onclick="salvarAlteracoesDados()">
+            <input type="button" value="Cancelar" onclick="resetarInformacoesDados()">
+            <div class="infoAlteracaoDados"></div>
+        </div>
+    </body>
+</html>
