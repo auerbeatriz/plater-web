@@ -156,6 +156,9 @@ body {
     margin-right: 30px;
 }
 /* Configurações de usuário */
+#bodyConfigUser {
+    font-family: sans-serif;
+}
 #imgFundo {
     width: 100%;
     height: 85px;
@@ -184,16 +187,26 @@ body {
 }
 #infoDadosUser {
     float: left;
+    margin-left: 100px;
 }
 #alterarEmail {
     float: left;
 }
 #alterarSenha {
     float: left;
+    margin-left: 150px;
 }
 #divFormAlterarDados {
     display: inline-block;
+    margin-left: 1%;;
 }
-#teste {
-    float:inline-end;
+#confirmarAlteracoes {
+    text-align: center;
+}
+.formulario {
+    line-height: 180%;
+}
+#divSisMed {
+    display: inline-table;
+    margin-left: 100px;
 }
