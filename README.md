@@ -12,23 +12,22 @@ Atualmente, com o surgimento de diversos aplicativos para delivery de alimentos 
 
 Assim, surgiu a ideia do Plater: um aplicativo e um site amigável, com a proposta de tornar a cozinha um lugar divertido e fácil de lidar. Com ele, as pessoas podem compartilhar suas próprias receitas com outras pessoas, salvar as receitas enviadas por outros usuários e se aventurar em novas gastronomias.
 
-Por limitação de tempo, o escopo do projeto foi reduzido inicialmente em três versões:
+Por limitação de tempo, o escopo do projeto foi reduzido inicialmente em dois módulos:
 
 | Versão | Funcionalidades |
 | ------------ | ------------ |
-|1| Login e cadastro de usuários, criação de receitas, salvar receitas, exibição de receitas  |
+|1| Login e cadastro de usuários; seguir usuários; exibição, criação, favoritagem, filtragem, avaliação e alteração de rendimento de receitas  |
 |2| Criação e gerenciamento de despensa virtual, receitas com uso da despensa  |
-|3| Execução de receitas com passo a passo  |
 
 Porém, existem infinitas outras funcionalidades em nossa mente que sonhamos em implementar ainda! Esse projeto está apenas começando, apenas nascendo.
 
 [Clique aqui para ver o arquivo de apresentação do tema.](https://github.com/auerbeatriz/plater-web/blob/761f14a4abced02bab9ba4e162661bf168d248aa/doc/definicaotema.pdf)
 
 ## Project Model Canvas (PMC)
-[Você pode conferir o quadro do projeto clicando aqui.](https://github.com/auerbeatriz/plater-web/blob/761f14a4abced02bab9ba4e162661bf168d248aa/doc/pmc.pdf)
+[Você pode conferir o quadro do projeto clicando aqui.](https://github.com/auerbeatriz/plater-web/blob/dea4d084fb6a8cca18ce5e4d0eb6edc1dd212926/doc/pmc.pdf)
 
 ## Descrição do mini-mundo
-Plater é um sistema web e um aplicativo móvel que permite aos usuários o compartilhamento de receitas entre si. Ele permite aos usuários fazer login ou cadastro no sistema. O usuário também poderá cadastrar em uma despensa virtual com todos os ingredientes que possuir em casa, podendo alterá-los de acordo com a quantidade disponível. O usuário então terá acesso a todas as receitas do site, que estarão dispostas na página Home. Essas receitas poderão ser filtradas utilizando tags (palavras que identificam as receitas, como "bolo"), pela checkbox disponível na página ou por filtros rápidos. As receitas melhores avaliadas no site devem ganhar destaque na página Home. Quando um usuário selecionar uma receita para ver, uma página com todos os seus dados (título, descrição, criador, média das avaliações dos usuários, tempo de preparo, rendimento e sistema de medidas utilizado, ingredientes e modo de preparo) devem ser exibidos. O usuário deverá ser capaz de alterar o rendimento e o sistema de medidas da receita e isso ter impacto na quantidade de ingredientes. Caso o usuário não tenha algum ingrediente disponível na despensa ou em quantidade insuficiente, o ingrediente deverá ser marcado com uma cor diferente. O usuário poderá fazer a receita com um passo a passo guiado, e ao finalizar a quantidade de ingredientes usados deve ser subtraída do total da despensa. O usuário poderá favoritar receitas de outros usuários e criar as suas próprias receitas, onde poderá também criar um passo a passo guiado. O usuário poderá alterar dados do cadastro em sua página e poderá seguir e visitar a página de outros usuários cadastrados no Plater.
+Plater é uma plataforma web e aplicativo móvel que permite aos usuários, por meio de login ou cadastro, acessar receitas compartilhadas pelos usuários no sistema. O usuário poderá criar, acessar, filtrar, favoritar e avaliar receitas, seguir outros usuários e cadastrar uma despensa virtual com os ingredientes que possui em casa. A despensa poderá ser alterada a qualquer momento pelo usuário, assim como as receitas que criou. As receitas serão exibidas marcando os ingredientes de acordo com a disponibilidade na despensa do usuário. O usuário também será capaz de alterar o rendimento da receita, e os ingredientes serão redimensionados proporcionalmente. Ao marcar que fez uma receita, o usuário terá direito a avaliá-la com uma nota de 1 a 5, que será usada para calcular a média de avaliações de receita e classificá-la como prioridade de exibição em filtragens ou não. Além disso, os ingredientes da receita poderão ser descontados da despensa do usuário, se assim desejar.
 
 ## Descrição dos requisitos
 ### Requisitos Funcionais
