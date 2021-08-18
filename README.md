@@ -30,9 +30,9 @@ Porém, existem infinitas outras funcionalidades em nossa mente que sonhamos em 
 Plater é uma plataforma web e aplicativo móvel que permite aos usuários, por meio de login ou cadastro, acessar receitas compartilhadas pelos usuários no sistema. O usuário poderá criar, acessar, filtrar, favoritar e avaliar receitas, seguir outros usuários e cadastrar uma despensa virtual com os ingredientes que possui em casa. A despensa poderá ser alterada a qualquer momento pelo usuário, assim como as receitas que criou. As receitas serão exibidas marcando os ingredientes de acordo com a disponibilidade na despensa do usuário. O usuário também será capaz de alterar o rendimento da receita, e os ingredientes serão redimensionados proporcionalmente. Ao marcar que fez uma receita, o usuário terá direito a avaliá-la com uma nota de 1 a 5, que será usada para calcular a média de avaliações de receita e classificá-la como prioridade de exibição em filtragens ou não. Além disso, os ingredientes da receita poderão ser descontados da despensa do usuário, se assim desejar.
 
 ## Descrição dos requisitos
-### Requisitos Funcionais
-### Requisitos Não Funcionais
+[Clique aqui para visualizar o backlog de requisitos do sistema](https://github.com/auerbeatriz/plater-web/blob/83015619118087d7877eab2715db5fd754d6b13a/doc/revisao%20de%20backlog%20do%20sistema.pdf)
 ## Modelo Conceitual / Classe do projeto
+[Clique aqui para visualizar o modelo de classes do projeto](https://github.com/auerbeatriz/plater-web/blob/83015619118087d7877eab2715db5fd754d6b13a/doc/Diagrama%20de%20Classe%20Plater.png)
 ## Projeto do sistema
 ## Telas do sistema
 
