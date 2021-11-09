@@ -8,7 +8,7 @@ $con = pg_connect(getenv("DATABASE_URL"));
  
 // array for JSON response
 $response = array();
-$id = 2;
+$id = 1;
 
 $_GET['username'] = 'plater_chef';
 $_GET['senha'] = '36d49c9b8283b3590023391f3801a1ab';
