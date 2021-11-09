@@ -41,15 +41,23 @@ if (isset($_GET["username"]) && isset($_GET["senha"])) {
  
 			// Converte a resposta para o formato JSON.
 			echo json_encode($response);
-	}
+		} else {
+			// Caso nao tenham receitas no bd, a chave success é 0 e o cliente recebe a mensagem do erro
+			$response["success"] = 0;
+			$response["message"] = "Ainda nao existem receitas";
+			
+			pg_close($con);
+		 
+			// Converte a resposta para o formato JSON.
+			echo json_encode($response);
+		}
 } else {
-    // Caso nao tenham receitas no bd, a chave success é 0 e o cliente recebe a mensagem do erro
-    $response["success"] = 0;
-    $response["message"] = "Ainda nao existem receitas";
+	$response["success"] = 0;
+	$response["message"] = "Voce nao esta logado";
 	
 	pg_close($con);
- 
-    // Converte a resposta para o formato JSON.
-    echo json_encode($response);
+	
+	// Converte a resposta para o formato JSON.
+	echo json_encode($response);
 }
 ?>
