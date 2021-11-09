@@ -1,28 +1,26 @@
 <?php
-// This peace of code search for all the recipes inserted on the database and returns it to the client as a json
-
+/* Esse pedaço de codigo pesquisa por todas as receitas que existem no banco de dados e as devolve para o cliente em formato json
+	Verifica se ha um usuario logado; caso sim, faz a consulta e, caso nao, exibe uma mensagem de erro */
 
 // connecting to db
 $con = pg_connect(getenv("DATABASE_URL"));
  
 // array for JSON response
 $response = array();
-$id = 1;
 
-//	Verifica se o usuario esta logado no sistema
+//	verifica se o usuario esta logado no sistema
 if (isset($_GET["username"]) && isset($_GET["senha"])) {
-		
+		//	consulta pelas receitas
 		$result = pg_query($con, "SELECT id_receita, titulo_receita, descricao_receita, tempo_preparo, rendimento, tipo_rendimento.tipo_rendimento as tipo_rendimento, multimidia, 
 								tipo_multimidia, categoria.descricao as categoria FROM receita
 								INNER JOIN categoria ON receita.fk_categoria_id_categoria = categoria.id_categoria
-								INNER JOIN tipo_rendimento ON receita.fk_tipo_rendimento_id_tipo_rendimento = tipo_rendimento.id_tipo_rendimento
-								WHERE id_receita = $id;");
+								INNER JOIN tipo_rendimento ON receita.fk_tipo_rendimento_id_tipo_rendimento = tipo_rendimento.id_tipo_rendimento");
 		
-		//	Se existirem receitas no bd, eles serão armazenados na chave "recipes" de $response e a chave "success" receberá o valor 1
-		
+		//	se existirem receitas no bd, eles serão armazenados na chave "recipes" de $response e a chave "success" receberá o valor 1
 		if (pg_num_rows($result) > 0) {
 			$response["recipes"] = array();
 			
+			//	para cada tupla no banco de dados, cria um array com os dados da receita e indexa-o na chave "recipes" de response
 			while ($row = pg_fetch_array($result)) {
 				$recipe = array();
 				$recipe['id_receita'] = $row['id_receita'];
@@ -39,7 +37,7 @@ if (isset($_GET["username"]) && isset($_GET["senha"])) {
 			}
 			
 			$response["success"] = 1;
-			$response["message"] = "entrou no primeiro if";
+			$response["message"] = "receitas carregadas com sucesso";
  
 			// Converte a resposta para o formato JSON.
 			echo json_encode($response);
