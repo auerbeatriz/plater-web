@@ -4,14 +4,10 @@
 
 // connecting to db
 $con = pg_connect(getenv("DATABASE_URL"));
-//$con = pg_connect("host=ec2-23-23-181-251.compute-1.amazonaws.com port=5432 dbname=d8555packlsg7v user=eavhbkmnummpuu password=1baeed6108ff9934e01b35c66392a5f5df008f84e86bafed1720ae41f86eba4b");
  
 // array for JSON response
 $response = array();
 $id = 1;
-
-$_GET['username'] = 'plater_chef';
-$_GET['senha'] = '36d49c9b8283b3590023391f3801a1ab';
 
 //	Verifica se o usuario esta logado no sistema
 if (isset($_GET["username"]) && isset($_GET["senha"])) {
