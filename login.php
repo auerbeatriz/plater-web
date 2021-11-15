@@ -1,49 +1,53 @@
 <?php
 
 // connecting to db
-$con = pg_connect(getenv("DATABASE_URL"));
+include_once("config.php");
+$con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
 
 // array for JSON response
 $response = array();
 
-$username = NULL;
-$password = NULL;
+$email = NULL;
+$senha = NULL;
 
+/* Entenda o codigo - Read more: http://www.linhadecodigo.com.br/artigo/894/seguranca-autenticando-o-php-com-http-authentication-required.aspx#ixzz7BvOSFv7U */
 // Método para mod_php (Apache)
 if ( isset( $_SERVER['PHP_AUTH_USER'] ) ) {
-    $username = $_SERVER['PHP_AUTH_USER'];
-    $password = $_SERVER['PHP_AUTH_PW'];
+    $email = trim($_SERVER['PHP_AUTH_USER']);
+    $senha = trim(md5($_SERVER['PHP_AUTH_PW']));
 }
 // Método para demais servers
 elseif(isset( $_SERVER['HTTP_AUTHORIZATION'])) {
-    if(preg_match( '/^basic/i', $_SERVER['HTTP_AUTHORIZATION']))
-		list($username, $password) = explode(':', base64_decode(substr($_SERVER['HTTP_AUTHORIZATION'], 6)));
+    if(preg_match( '/^basic/i', $_SERVER['HTTP_AUTHORIZATION'])) {
+		list($email, $senha) = explode(':', base64_decode(substr($_SERVER['HTTP_AUTHORIZATION'], 6)));
+	}
 }
 
 // Se a autenticação não foi enviada
-if(is_null($username)) {
+if(is_null($email)) {
     $response["success"] = 0;
-	$response["error"] = "faltam parametros";
+	$response["error"] = "Email ou senha não informado";
 }
 // Se houve envio dos dados
 else {
-    $query = pg_query($con, "SELECT password FROM usuarios WHERE login='$username'");
+    $query = pg_query($con, "SELECT senha FROM usuario WHERE email='$email'");
 
 	if(pg_num_rows($query) > 0){
 		$row = pg_fetch_array($query);
-		if($password == $row['password']){
+		
+		if($senha == trim($row["senha"])){
 			$response["success"] = 1;
 		}
 		else {
 			// senha ou usuario nao confere
 			$response["success"] = 0;
-			$response["error"] = "usuario ou senha não confere";
+			$response["error"] = "Usuário ou senha incorreto";
 		}
 	}
 	else {
 		// senha ou usuario nao confere
 		$response["success"] = 0;
-		$response["error"] = "usuario ou senha não confere";
+		$response["error"] = "Usuário não encontrado";
 	}
 }
 
