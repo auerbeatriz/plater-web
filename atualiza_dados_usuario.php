@@ -50,21 +50,16 @@ if(!is_null($email) && !is_null($senha) && isset($_POST['opcao']) && isset($_POS
                 break;
             case 'senha':
                 $senha = trim($_POST['valor']);
-                if(strlen($senha) < 6) {
-                    $response["success"] = 0;
-                    $response["error"] = "Utilize uma senha com no mínimo 6 caracteres.";
+                $senha = md5($senha);
+                
+                $result = pg_query($con, "UPDATE usuario SET senha='$senha' WHERE username='$username';");
+                if($result) {
+                    $response['success'] = 1;
+                    $response['message'] = "Senha alterada com sucesso";
                 }
                 else {
-                    $senha = md5($senha);
-                    $result = pg_query($con, "UPDATE usuario SET senha='$senha' WHERE username='$username';");
-                    if($result) {
-                        $response['success'] = 1;
-                        $response['message'] = "Senha alterada com sucesso";
-                    }
-                    else {
-                        $response['success'] = 0;
-                        $response['message'] = "Error BD: ".pg_last_error($con);
-                    }
+                    $response['success'] = 0;
+                    $response['message'] = "Error BD: ".pg_last_error($con);
                 }
                 break;
             default:

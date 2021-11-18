@@ -27,10 +27,6 @@ if (isset($_POST['nome']) && isset($_POST['username']) && isset($_POST['email'])
 			$response["success"] = 0;
 			$response["error"] = "Esse username já está em uso.";
 		}
-		elseif(strlen($_POST['senha']) < 6) {
-			$response["success"] = 0;
-			$response["error"] = "Utilize uma senha com no mínimo 6 caracteres.";
-		}
 		else {
 			$result = pg_query($con, "INSERT INTO usuario(username, email, nome, senha) VALUES('$username', '$email', '$nome', '$senha')");
 		 
