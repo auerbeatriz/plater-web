@@ -1,17 +1,12 @@
 <?php
  
-/*
- * Following code will create a new product row
- * All product details are read from HTTP Post Request
- */
- 
+// array for JSON response
+$response = array();
+
 // connecting to db
 include_once("config.php");
 $con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
 
-// array for JSON response
-$response = array();
- 
 // check for required fields
 if (isset($_POST['nome']) && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['senha'])) {
  
@@ -21,14 +16,22 @@ if (isset($_POST['nome']) && isset($_POST['username']) && isset($_POST['email'])
 	$senha = trim(md5($_POST['senha']));
 	
 	if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-		$usuario_existe = pg_query($con, "SELECT username FROM usuario WHERE username='$username'");
-		// check for empty result
-		if (pg_num_rows($usuario_existe) > 0) {
+		$verifyUsernameExclusivity = pg_query($con, "SELECT username FROM usuario WHERE username='$username'");
+		$verifyEmailExclusivity = pg_query($con, "SELECT email FROM usuario WHERE email='$email'");
+
+		if (pg_num_rows($verifyEmailExclusivity) > 0) {
 			$response["success"] = 0;
-			$response["error"] = "Usuário já cadastrado";
+			$response["error"] = "Já existe um usuário cadastrado para esse email.";
+		}
+		elseif (pg_num_rows($verifyUsernameExclusivity) > 0) {
+			$response["success"] = 0;
+			$response["error"] = "Esse username já está em uso.";
+		}
+		elseif(strlen($_POST['senha']) < 6) {
+			$response["success"] = 0;
+			$response["error"] = "Utilize uma senha com no mínimo 6 caracteres.";
 		}
 		else {
-			// mysql inserting a new row
 			$result = pg_query($con, "INSERT INTO usuario(username, email, nome, senha) VALUES('$username', '$email', '$nome', '$senha')");
 		 
 			if ($result) {
@@ -47,7 +50,7 @@ if (isset($_POST['nome']) && isset($_POST['username']) && isset($_POST['email'])
 }
 else {
     $response["success"] = 0;
-	$response["error"] = "faltam parametros";
+	$response["error"] = "Faltam parâmetros.";
 }
 
 pg_close($con);
