@@ -9,9 +9,8 @@ $con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Co
 
 include_once("authentication.php");
 
-if(!is_null($email) && !is_null($senha) && isset($_POST['opcao']) && isset($_POST['valor']) && isset($_POST['username'])) {
-    if(authentication($email, $senha, $con)) {
-        $username = $_POST['username'];
+if(!is_null($username) && !is_null($senha) && isset($_POST['opcao']) && isset($_POST['valor'])) {
+    if(authentication($username, $senha, $con)) {
         switch($_POST['opcao']) {
             case 'nome':
                 $nome = $_POST['valor'];

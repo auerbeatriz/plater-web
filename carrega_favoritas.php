@@ -10,12 +10,8 @@ $con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Co
 
 include_once("authentication.php");
 
-$email = 'matgiacomin@gmail.com';
-$senha = '8382962e245ac966ce6adf9734978ba4';
-
-if(!is_null($email) && !is_null($senha) && isset($_GET['username'])) {
-    if(authentication($email, $senha, $con)) {
-        $username = $_GET['username'];
+if(!is_null($username) && !is_null($senha)) {
+    if(authentication($username, $senha, $con)) {
         $result = pg_query($con, "
         SELECT receita.id_receita, receita.titulo_receita, receita.descricao_receita, receita.tempo_preparo, receita.rendimento, tipo_rendimento.tipo_rendimento, categoria.descricao as categoria  FROM receita
 		INNER JOIN categoria ON receita.fk_categoria_id_categoria = categoria.id_categoria

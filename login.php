@@ -9,8 +9,8 @@ $con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Co
 
 include_once("authentication.php");
 
-if(!is_null($email) && !is_null($senha)) {
-    if(authentication($email, $senha, $con)) {
+if(!is_null($username) && !is_null($senha)) {
+    if(authentication($username, $senha, $con)) {
         $response["success"] = 1;
         
         // codigo sql da sua consulta
