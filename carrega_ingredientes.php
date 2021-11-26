@@ -15,7 +15,7 @@ if(isset($_GET['id_receita'])) {
 	
 	//	realizando a consulta
 	$result = pg_query("
-	SELECT quantidade, unidade_medida.unidade_medida, insumo.nome_insumo as insumo
+	SELECT id_ingrediente, quantidade, unidade_medida.unidade_medida, insumo.nome_insumo as insumo, FK_RECEITA_id_receita as id_receita
 	FROM ingrediente
 	INNER JOIN insumo
 		ON ingrediente.FK_INSUMO_id_insumo = insumo.id_insumo
@@ -30,29 +30,23 @@ if(isset($_GET['id_receita'])) {
 		
 		while($row = pg_fetch_array($result)) {
 			$ingrediente = array();
+			$ingrediente["id"] = $row["id_ingrediente"];
 			$ingrediente["quantidade"] = $row["quantidade"];
 			$ingrediente["unidade_medida"] = $row["unidade_medida"];
 			$ingrediente["insumo"] = $row["insumo"];
 			array_push($response["ingredientes"], $ingrediente);
 		}
 		
-		// fecha a conexao com o BD
-		pg_close($con);
-		
 		$response["success"] = 1;
-		$response["message"] = "Ingredientes carregados com sucesso";
-		
-		echo json_encode($response);		
 	}
-	else {
-		// fecha a conexao com o BD
-		pg_close($con);
-		
+	else {		
 		$response["success"] = 0;
 		$response["message"] = "Receita não encontrada";
-		
-		echo json_encode($response);
 	}
+	
+	// fecha a conexao com o BD
+	pg_close($con);
+	echo json_encode($response);
 }
 else {
 	$response["success"] = 0;

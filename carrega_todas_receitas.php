@@ -9,11 +9,14 @@ $con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Co
 
 // array for JSON response
 $response = array();
-
+if(isset($_GET['lastRecipe'])) {
+	
+	$lastRecipe = $_GET['lastRecipe'];
 		//	consulta pelas receitas
 		$result = pg_query($con, "SELECT id_receita, titulo_receita, descricao_receita, tempo_preparo, rendimento, tipo_rendimento.tipo_rendimento, categoria.descricao as categoria  FROM receita
 									INNER JOIN categoria ON receita.fk_categoria_id_categoria = categoria.id_categoria
-									INNER JOIN tipo_rendimento ON receita.fk_tipo_rendimento_id_tipo_rendimento = tipo_rendimento.id_tipo_rendimento");
+									INNER JOIN tipo_rendimento ON receita.fk_tipo_rendimento_id_tipo_rendimento = tipo_rendimento.id_tipo_rendimento
+									WHERE id_receita > '$lastRecipe'");
 		
 		//	se existirem receitas no bd, eles serão armazenados na chave "recipes" de $response e a chave "success" receberá o valor 1
 		if (pg_num_rows($result) > 0) {
@@ -35,19 +38,23 @@ $response = array();
 			
 			$response["success"] = 1;
 			$response["message"] = "receitas carregadas com sucesso";
- 
-			pg_close($con);
- 
-			// Converte a resposta para o formato JSON.
-			echo json_encode($response);
+
 		} else {
 			// Caso nao tenham receitas no bd, a chave success é 0 e o cliente recebe a mensagem do erro
 			$response["success"] = 0;
 			$response["message"] = "Ainda nao existem receitas";
-			
-			pg_close($con);
+		}
+}
+else {
+	$response["success"] = 0;
+	$response["message"] = "ultima receita nao informada";
+	
+	
+}
+
+pg_close($con);
 		 
 			// Converte a resposta para o formato JSON.
 			echo json_encode($response);
-		}
+
 ?>
