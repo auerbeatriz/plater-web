@@ -4,7 +4,7 @@ function searchForEmailAccount($email, $con) {
 	$query = "SELECT * FROM usuario WHERE email='$email';";
 	$result = pg_query($con, $query);
 	
-	if(pg_fetch_array($result)>0) { return true; }
+	if(pg_num_rows($result)>0) { return true; }
 	else { return false; }
 }
 

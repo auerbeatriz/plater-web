@@ -6,52 +6,54 @@
 //	array para armazenar a resposta JSON 
 $response = array();
 
-if(isset($_GET['id_receita'])) {
-	$id = $_GET['id_receita'];
-	
-	//	conexao com o db
-	include_once("config.php");
-	$con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
-	
-	//	realizando a consulta
-	$result = pg_query("
-	SELECT id_ingrediente, quantidade, unidade_medida.unidade_medida, insumo.nome_insumo as insumo, FK_RECEITA_id_receita as id_receita
-	FROM ingrediente
-	INNER JOIN insumo
-		ON ingrediente.FK_INSUMO_id_insumo = insumo.id_insumo
-	INNER JOIN unidade_medida
-		ON ingrediente.FK_UNIDADE_MEDIDA_id_unidade_medida = unidade_medida.id_unidade_medida
-	WHERE fk_RECEITA_id_receita = $id
-	ORDER BY id_ingrediente ASC;");
-	
-	//	se houve resposta, crie o array json e envie para a app
-	if(pg_num_rows($result) > 0) {
-		$response['ingredientes'] = array();
+include_once("config.php");
+include_once("authentication.php");
+
+$con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
+
+if(isset($_GET['id_receita']) && !is_null($email) && !is_null($senha)) {
+	if(authentication($email, $senha, $con)) {
+		$id = $_GET['id_receita'];
+		$query = "SELECT id_ingrediente, quantidade, unidade_medida.unidade_medida, insumo.nome_insumo as insumo, FK_RECEITA_id_receita as id_receita
+		FROM ingrediente
+		INNER JOIN insumo
+			ON ingrediente.FK_INSUMO_id_insumo = insumo.id_insumo
+		INNER JOIN unidade_medida
+			ON ingrediente.FK_UNIDADE_MEDIDA_id_unidade_medida = unidade_medida.id_unidade_medida
+		WHERE fk_RECEITA_id_receita = $id
+		ORDER BY id_ingrediente ASC;";
+		//	realizando a consulta
+		$result = pg_query($con, $query);
 		
-		while($row = pg_fetch_array($result)) {
-			$ingrediente = array();
-			$ingrediente["id"] = $row["id_ingrediente"];
-			$ingrediente["quantidade"] = $row["quantidade"];
-			$ingrediente["unidade_medida"] = $row["unidade_medida"];
-			$ingrediente["insumo"] = $row["insumo"];
-			array_push($response["ingredientes"], $ingrediente);
+		//	se houve resposta, crie o array json e envie para a app
+		if(pg_num_rows($result) > 0) {
+			$response['ingredientes'] = array();
+			
+			while($row = pg_fetch_array($result)) {
+				$ingrediente = array();
+				$ingrediente["id"] = $row["id_ingrediente"];
+				$ingrediente["quantidade"] = $row["quantidade"];
+				$ingrediente["unidade_medida"] = $row["unidade_medida"];
+				$ingrediente["insumo"] = $row["insumo"];
+				array_push($response["ingredientes"], $ingrediente);
+			}
+			
+			$response["success"] = 1;
 		}
-		
-		$response["success"] = 1;
+		else {		
+			$response["success"] = 0;
+			$response["message"] = "Receita não encontrada";
+		}
 	}
-	else {		
-		$response["success"] = 0;
-		$response["message"] = "Receita não encontrada";
+	else {
+		$response['success'] = 0;
+		$response["message"] = "Autenticação requerida.";
 	}
-	
-	// fecha a conexao com o BD
-	pg_close($con);
-	echo json_encode($response);
 }
 else {
 	$response["success"] = 0;
-	$response["message"] = "Receita não informada";
-	
-	echo json_encode($response);
+	$response["message"] = "Faltam parâmetros";
 }
+pg_close($con);
+echo json_encode($response);
 ?>

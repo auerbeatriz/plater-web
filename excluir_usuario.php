@@ -2,9 +2,9 @@
 $response = array();
 
 include_once("config.php");
-$con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
-
 include_once("authentication.php");
+
+$con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
 
 if(!is_null($username) && !is_null($senha)) {
     if(authentication($username, $senha, $con)) {

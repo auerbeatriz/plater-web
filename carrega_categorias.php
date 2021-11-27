@@ -3,22 +3,38 @@
 $response = array();
 
 include_once("config.php");
+include_once("authentication.php");
+
 $con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
 
-$result = pg_query($con, "SELECT * FROM categoria ORDER BY descricao ASC;");
-if(pg_num_rows($result) > 0) {
-    while($row = pg_fetch_array($result)) {
-        $categoria = array();
-        $categoria['id_categoria'] = $row['id_categoria'];
-        $categoria['categoria'] = $row['descricao'];
+if(!is_null($email) && !is_null($senha)) {
+    if(authentication($email, $senha, $con)) {
+        $query = "SELECT * FROM categoria ORDER BY descricao ASC;";
+        $result = pg_query($con, $query);
 
-        array_push($response, $categoria);
+        if(pg_num_rows($result) > 0) {
+            while($row = pg_fetch_array($result)) {
+                $categoria = array();
+                $categoria['id_categoria'] = $row['id_categoria'];
+                $categoria['categoria'] = $row['descricao'];
+
+                array_push($response, $categoria);
+            }
+            $response['success'] = 1;
+        }
+        else {
+            $response['success'] = 0;
+            $response['message'] = "Não existem categorias ainda.";
+        }
     }
-    $response['success'] = 1;
+    else {
+        $response['success'] = 0;
+        $response['message'] = "Autenticação requerida.";
+    }
 }
 else {
     $response['success'] = 0;
-    $response['message'] = "Não existem categorias ainda.";
+    $response['message'] = "Faltam parâmetros";
 }
 
 pg_close($con);
