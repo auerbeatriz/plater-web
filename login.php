@@ -11,15 +11,16 @@ include_once("authentication.php");
 
 if(!is_null($email) && !is_null($senha)) {
     if(authentication($email, $senha, $con)) {
-        $username = getUsername($email, $senha, $con);
-        if($username != NULL) {
+        $userData = getUserData($email, $senha, $con);
+        if(count($userData) > 0) {
+            $response["username"] = $userData[0];
+            $response["nome"] = $userData[1];
             $response["success"] = 1;
-            $response["username"] = $username;
         }
     }
     else {
         $response["success"] = 0;
-        $response["error"] = "Usuário ou senha incorretos.";
+        $response["error"] = "Email ou senha incorretos.";
     }
 }
 else {

@@ -30,7 +30,7 @@ if(!is_null($email) && !is_null($senha) && isset($_POST['username']) && isset($_
                 $verifyEmailExclusivity = pg_query($con, "SELECT email FROM usuario WHERE email='$email'");
                 if (pg_num_rows($verifyEmailExclusivity) > 0) {
                     $response["success"] = 0;
-                    $response["error"] = "Email em uso por outro usuário no momento.";
+                    $response["message"] = "Email em uso por outro usuário no momento.";
                 }
                 elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $response['success'] = 0;

@@ -1,8 +1,5 @@
 <?php
 
-$email = 'biaauer03@gmail.com';
-$senha = '123456';
-
 /* Entenda o codigo - Read more: http://www.linhadecodigo.com.br/artigo/894/seguranca-autenticando-o-php-com-http-authentication-required.aspx#ixzz7BvOSFv7U */
 // Método para mod_php (Apache)
 if ( isset( $_SERVER['PHP_AUTH_USER'] ) ) {
@@ -26,12 +23,13 @@ function authentication($email, $senha, $con) {
     return false;
 }
 
-function getUsername($email, $senha, $con) {
+function getUserData($email, $senha, $con) {
     $senha = md5($senha);
-    $result = pg_query($con, "SELECT username FROM usuario WHERE email='$email' AND senha='$senha';");
+    $result = pg_query($con, "SELECT username, nome FROM usuario WHERE email='$email' AND senha='$senha';");
     if(pg_num_rows($result) > 0){
         $row = pg_fetch_array($result);
-        return $row['username'];
+        $data = array($row['username'], $row['nome']);
+        return $data;
     }
     else {
         return NULL;
