@@ -2,10 +2,9 @@
 
 $response = array();
 
-include_once("config.php");
 include_once("authentication.php");
 
-$con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
+$con = pg_connect(getenv("DATABASE_URL"));
 
 if(!is_null($email) && !is_null($senha) && isset($_GET['categoria'])) {
     if(authentication($email, $senha, $con)) {
@@ -18,10 +17,11 @@ if(!is_null($email) && !is_null($senha) && isset($_GET['categoria'])) {
             
             //	para cada tupla no banco de dados, cria um array com os dados da receita e indexa-o na chave "recipes" de response
             while ($row = pg_fetch_array($result)) {
-                $recipe = array();
-                $recipe['id_receita'] = $row['id_receita'];
+                //$recipe = array();
+                //$recipe['id_receita'] = $row['id_receita'];
                 
-                array_push($response["recipes"], $recipe);
+                //array_push($response["recipes"], $recipe);
+                array_push($response["recipes"], $row['id_receita']);
             }
             
             $response["success"] = 1;

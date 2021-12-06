@@ -2,21 +2,18 @@
 /* Esse pedaço de codigo pesquisa por todas as receitas que existem no banco de dados e as devolve para o cliente em formato json */
 
 // connecting to db
-//$con = pg_connect(getenv("DATABASE_URL"));
-include_once("config.php");
+$con = pg_connect(getenv("DATABASE_URL"));
 include_once("authentication.php");
-
-$con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
 
 // array for JSON response
 $response = array();
 if(isset($_GET['lastRecipe']) && !is_null($email) && !is_null($senha)) {
 	if(authentication($email, $senha, $con)) {
 		$lastRecipe = $_GET['lastRecipe'];
-		$query = "SELECT id_receita, titulo_receita, descricao_receita, tempo_preparo, rendimento, tipo_rendimento.tipo_rendimento, categoria.descricao as categoria  FROM receita
+		$query = "SELECT id_receita, titulo_receita, descricao_receita, tempo_preparo, rendimento, tipo_rendimento.tipo_rendimento, categoria.id_categoria, categoria.descricao as categoria, multimidia, tipo_multimidia  FROM receita
 		INNER JOIN categoria ON receita.fk_categoria_id_categoria = categoria.id_categoria
 		INNER JOIN tipo_rendimento ON receita.fk_tipo_rendimento_id_tipo_rendimento = tipo_rendimento.id_tipo_rendimento
-		WHERE id_receita > '$lastRecipe'";
+		WHERE id_receita > '$lastRecipe';";
 		$result = pg_query($con, $query);
 		
 		//	se existirem receitas no bd, eles serão armazenados na chave "recipes" de $response e a chave "success" receberá o valor 1
@@ -32,7 +29,10 @@ if(isset($_GET['lastRecipe']) && !is_null($email) && !is_null($senha)) {
 				$recipe['tempo_preparo'] = $row['tempo_preparo'];
 				$recipe['rendimento'] = $row['rendimento'];
 				$recipe['tipo_rendimento'] = $row['tipo_rendimento'];
+				$recipe['id_categoria'] = $row["id_categoria"];
 				$recipe['categoria'] = $row['categoria'];
+				$recipe['url'] = $row['multimidia'];
+				$recipe['urlType'] = $row['tipo_multimidia'];
 				
 				array_push($response["recipes"], $recipe);
 			}

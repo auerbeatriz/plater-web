@@ -1,4 +1,6 @@
 <?php
+$email = NULL;
+$senha = NULL;
 
 /* Entenda o codigo - Read more: http://www.linhadecodigo.com.br/artigo/894/seguranca-autenticando-o-php-com-http-authentication-required.aspx#ixzz7BvOSFv7U */
 // Método para mod_php (Apache)

@@ -4,8 +4,7 @@
 $response = array();
 
 // connecting to db
-include_once("config.php");
-$con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
+$con = pg_connect(getenv("DATABASE_URL"));
 
 if(isset($_POST['email']) && isset($_POST['senha'])) {
     $email = trim($_POST['email']);

@@ -2,20 +2,21 @@
 $response = array();
 
 // connecting to db
-include_once("config.php");
-$con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
+$con = pg_connect(getenv("DATABASE_URL"));
 
 include_once("authentication.php");
 
-if(!is_null($username) && !is_null($senha) && isset($_POST['id_receita'])) {
-    if(authentication($username, $senha, $con)) {
+if(!is_null($email) && !is_null($senha) && isset($_POST['id_receita']) && isset($_POST['username'])) {
+    if(authentication($email, $senha, $con)) {
         $id_receita = $_POST['id_receita'];
+        $username = trim($_POST['username']);
 
-        $result = pg_query($con, "
-        SELECT * FROM usuario_favorita_receita WHERE fk_usuario_username='$username' AND fk_receita_id_receita=$id_receita;
-        ");
+        $query = "SELECT * FROM usuario_favorita_receita WHERE fk_usuario_username='$username' AND fk_receita_id_receita=$id_receita;";
+        $result = pg_query($con, $query);
+
         if(pg_num_rows($result) > 0) {
             $response['success'] = 1;
+            $response['message'] = "Receita favorita";
         }
         else {
             $response['success'] = 0;

@@ -2,29 +2,32 @@
 
 $response = array();
 
-include_once("config.php");
 include_once("authentication.php");
 
-$con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
+$con = pg_connect(getenv("DATABASE_URL"));
 
-if(!is_null($email) && !is_null($senha)) {
+if(!is_null($email) && !is_null($senha) && isset($_GET['lastCategory'])) {
     if(authentication($email, $senha, $con)) {
-        $query = "SELECT * FROM categoria ORDER BY descricao ASC;";
+        $lastCategory = $_GET['lastCategory'];
+        $query = "SELECT * FROM categoria WHERE id_categoria > $lastCategory ORDER BY id_categoria ASC;";
         $result = pg_query($con, $query);
 
         if(pg_num_rows($result) > 0) {
+            $response["categories"] = array();
+
             while($row = pg_fetch_array($result)) {
                 $categoria = array();
                 $categoria['id_categoria'] = $row['id_categoria'];
                 $categoria['categoria'] = $row['descricao'];
+                $categoria["img_categoria"] = $row['img_categoria'];
 
-                array_push($response, $categoria);
+                array_push($response['categories'], $categoria);
             }
             $response['success'] = 1;
         }
         else {
             $response['success'] = 0;
-            $response['message'] = "Não existem categorias ainda.";
+            $response['message'] = "Não existem categorias a serem carregadas";
         }
     }
     else {

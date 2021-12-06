@@ -5,14 +5,13 @@
 $response = array();
 
 // connecting to db
-include_once("config.php");
-$con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
+$con = pg_connect(getenv("DATABASE_URL"));
 
 include_once("authentication.php");
 
 if(!is_null($email) && !is_null($senha) && isset($_GET['username'])) {
     if(authentication($email, $senha, $con)) {
-        $username = $_GET['username'];
+        $username = trim($_GET['username']);
         $query = "SELECT fk_receita_id_receita as id_receita FROM usuario_favorita_receita WHERE usuario_favorita_receita.fk_usuario_username='$username';";
         $result = pg_query($con, $query);
 

@@ -6,9 +6,8 @@
 $response = array();
 
 include_once("authentication.php");
-include_once("config.php");
 
-$con = pg_connect("host=$host dbname=$db user=$user password=$pass") or die ("Could not connect to server\n");
+$con = pg_connect(getenv("DATABASE_URL"));
 
 if(isset($_GET['id_receita']) && !is_null($email) && !is_null($senha)) {
 	if(authentication($email, $senha, $con)) {
