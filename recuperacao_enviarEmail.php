@@ -17,14 +17,14 @@ function generateRecoveryCode($email, $con) {
 	else { return false; }
 }
 
-function sendCodeThroughEmail($email, $code) {
+function sendCodeThroughEmail($toEmail, $code) {
 	require 'vendor/autoload.php';
 
 	$email = new SendGrid\Mail\Mail();
 	$email->setFrom("no-reply@plater.tech", "Team Plater");
 	$email->setSubject("Recuperação de senha");
 	$email->addTo(
-		"$email",
+		"$toEmail",
 		"Usuário do Plater",
 		[
 			"code" => "$code"
@@ -32,11 +32,14 @@ function sendCodeThroughEmail($email, $code) {
 		0
 	);
 	$email->setTemplateId("d-fc11f943a4814c4ab0f2b4e2bd223462");
-	$sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+	$sendgrid = new \SendGrid(getenv("SENDGRID_API_KEY"));
 
 	try {
 		$response = $sendgrid->send($email);
-		return $response;
+		print $response->statusCode() . "\n";
+		print_r($response->headers());
+		print $response->body() . "\n";
+		//return $response;
 	} catch (Exception $e) {
 		echo 'Caught exception: '.  $e->getMessage(). "\n";
 	}
@@ -74,4 +77,5 @@ else {
 
 pg_close($con);
 echo json_encode($response);
+
 ?>
