@@ -24,15 +24,28 @@ Existem ainda infinitas outras funcionalidades em nossa mente que sonhamos em im
 *Durante todo o percurso até aqui, várias funcionalidades tiveram que ter a sua implementação paralisada, por isso há mais funcionalidades previstas na apresentação do projeto, que é o que o **Plater** é de fato, do que o que será implementado como projeto integrador.*
 
 ## Project Model Canvas (PMC)
-[Você pode conferir o quadro do projeto clicando aqui.](https://github.com/auerbeatriz/plater-web/blob/dea4d084fb6a8cca18ce5e4d0eb6edc1dd212926/doc/pmc.pdf)
+[Você pode conferir o quadro do projeto clicando aqui.](https://github.com/auerbeatriz/plater-web/blob/275060c76a3767e43d5ad9466ee396289990ea5e/doc/pmc.pdf)
 
 ## Descrição do mini-mundo
 Plater é um aplicativo móvel que permite aos usuários, por meio de cadastro e login, criar uma conta e acessar as receitas no sistema. Primeiramente, o usuário poderá acessar, filtrar por categorias e favoritar as receitas. Em uma segunda versão, o usuário também poderá criar receitas e seguir outros usuários, para ter acesso às receitas deles. O usuário também será capaz de alterar o rendimento da receita, e os ingredientes serão redimensionados proporcionalmente. Na segunda versão, ainda, o usuário poderá avaliar uma receita com uma nota de 1 a 5, que será usada para calcular a média de avaliações dq receita e classificá-la como prioridade de exibição em filtragens (destaque, mais bem avaliadas, etc) ou não.
 
 ## Descrição dos requisitos
-[Clique aqui para visualizar o backlog de requisitos do sistema](https://github.com/auerbeatriz/plater-web/blob/83015619118087d7877eab2715db5fd754d6b13a/doc/revisao%20de%20backlog%20do%20sistema.pdf)
-## Modelo Conceitual / Classe do projeto
+[Clique aqui para visualizar o backlog de requisitos do sistema](https://github.com/auerbeatriz/plater-web/blob/56859521e45377d247dafc5df731bd5a2d81f6d4/doc/Backlog%20de%20Requisitos%20Plater%20-%20M%C3%B3dulo%201.pdf)
+
+## Modelo de Classe do projeto
 [Clique aqui para visualizar o modelo de classes do projeto](https://github.com/auerbeatriz/plater-web/blob/83015619118087d7877eab2715db5fd754d6b13a/doc/Diagrama%20de%20Classe%20Plater.png)
+
+## Modelos do banco de dados
+
+**Modelo Conceitual:**
+[Clique aqui para visualizar o modelo conceitual do banco de dados](https://github.com/auerbeatriz/plater-web/raw/83015619118087d7877eab2715db5fd754d6b13a/doc/Diagrama%20de%20Classe%20Plater.png)
+
+**Modelo Lógico:**
+[Clique aqui para visualizar o modelo lógico do banco de dados](https://github.com/auerbeatriz/plater-web/raw/main/doc/Modelo_Logico.png)
+
+**Modelo físico:**
+[Clique aqui para visualizar o modelo físico do banco de dados (script/backup)](https://github.com/auerbeatriz/plater-web/blob/c1677fa4d379e0f8bfb2b78814d12ad01daec2b0/doc/script_plater_bd.sql.pdf)
+
 ## Projeto do sistema
 ## Telas do sistema
 
