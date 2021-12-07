@@ -11,14 +11,38 @@ function searchForEmailAccount($email, $con) {
 //	this function generates a random code and set it up on the database to the user trying to change they password
 function generateRecoveryCode($email, $con) {
 	$code = rand(1000, 9999);
-	//	ENVIA O EMAIL
+	sendCodeThroughEmail($email, $code);
 	$query = "UPDATE usuario SET recovery_code='$code' WHERE email='$email';";
 	if(pg_query($con, $query)) { return true; }
 	else { return false; }
 }
 
-$response = array();
+function sendCodeThroughEmail($email, $code) {
+	require 'vendor/autoload.php';
 
+	$email = new SendGrid\Mail\Mail();
+	$email->setFrom("no-reply@plater.tech", "Team Plater");
+	$email->setSubject("Recuperação de senha");
+	$email->addTo(
+		"$email",
+		"Usuário do Plater",
+		[
+			"code" => "$code"
+		],
+		0
+	);
+	$email->setTemplateId("d-fc11f943a4814c4ab0f2b4e2bd223462");
+	$sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+
+	try {
+		$response = $sendgrid->send($email);
+		return $response;
+	} catch (Exception $e) {
+		echo 'Caught exception: '.  $e->getMessage(). "\n";
+	}
+}
+
+$response = array();
 $con = pg_connect(getenv("DATABASE_URL"));
 
 if(isset($_POST['email'])) {
