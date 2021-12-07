@@ -35,7 +35,7 @@ Plater é um aplicativo móvel que permite aos usuários, por meio de cadastro e
 ## Modelo de Classe do projeto
 [Clique aqui para visualizar o modelo de classes do projeto](https://github.com/auerbeatriz/plater-web/blob/83015619118087d7877eab2715db5fd754d6b13a/doc/Diagrama%20de%20Classe%20Plater.png)
 
-##Modelos do banco de dados
+## Modelos do banco de dados
 
 **Modelo Conceitual:**
 [Clique aqui para visualizar o modelo conceitual do banco de dados](https://github.com/auerbeatriz/plater-web/raw/83015619118087d7877eab2715db5fd754d6b13a/doc/Diagrama%20de%20Classe%20Plater.png)
