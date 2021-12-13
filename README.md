@@ -47,9 +47,22 @@ Plater é um aplicativo móvel que permite aos usuários, por meio de cadastro e
 [Clique aqui para visualizar o modelo físico do banco de dados (script/backup)](https://github.com/auerbeatriz/plater-web/blob/c1677fa4d379e0f8bfb2b78814d12ad01daec2b0/doc/script_plater_bd.sql.pdf)
 
 ## Projeto do sistema
+#### Do lado cliente web
+    Não haverá sistema web
+
+#### Do lado cliente mobile
+     Java
+
+#### Do lado servidor:
+     Linguagem php
+     Postgres como banco de dados 
+     Heroku + Twilio Sendgrid (envio de e-mail) + Cloudinary (armazenamento de imagens)
+
 ## Telas do sistema
 
-[Clique aqui para fazer o download da prototipagem do sistema web.](https://github.com/auerbeatriz/plater-web/raw/main/doc/prototipagem_web/Imagens%20-%20wireframes%20web%20Plater.zip)
+[Clique aqui para fazer o download da prototipagem do sistema móvel.](https://github.com/auerbeatriz/plater-web/raw/main/doc/Prototipagem%20m%C3%B3vel%20Plater%20-%20imagens.zip)
+
+[Clique aqui para fazer o download das telas desenvolvidas do sistema (app real) até 13/12/21.](https://github.com/auerbeatriz/plater-web/raw/main/doc/telas_plater.zip)
 
 ## Referência / consulta de códigos
 
