@@ -59,7 +59,7 @@ Plater é um aplicativo móvel que permite aos usuários, por meio de cadastro e
      Heroku + Twilio Sendgrid (envio de e-mail) + Cloudinary (armazenamento de imagens)
      Serviço de DNS (cloudflare via get.tech)
      
-     A aplicação web pode ser acessada em: http://plater.tech/
+     A aplicação web pode ser acessada em: [http://plater.tech/](http://plater.tech/)
 
 ## Telas do sistema
 
