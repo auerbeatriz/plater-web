@@ -67,6 +67,24 @@ Plater é um aplicativo móvel que permite aos usuários, por meio de cadastro e
 
 [Clique aqui para fazer o download das telas desenvolvidas do sistema (app real) até 13/12/21.](https://github.com/auerbeatriz/plater-web/raw/main/doc/telas_plater.zip)
 
+## Lições aprendidas
+
+10/06 (grupo): [Acesse o documento](https://github.com/auerbeatriz/plater-web/blob/29ce577d0fcc3a17d0984efd559fd4d8199f4519/doc/Canvas%20de%20Li%C3%A7%C3%B5es%20Aprendidas%20-%20Plater.pdf)
+
+23/11 (beatriz): [Acesso do documento](https://github.com/auerbeatriz/plater-web/blob/29ce577d0fcc3a17d0984efd559fd4d8199f4519/doc/Li%C3%A7%C3%B5es%20aprendidas%20-%20Beatriz.pdf)
+
+## Roadmap
+
+[Clique aqui para visualizar o roadmap do projeto](https://github.com/auerbeatriz/plater-web/blob/29ce577d0fcc3a17d0984efd559fd4d8199f4519/doc/Roadmap-v2%20Plater.pdf)
+
+## Plano de testes
+
+[Clique aqui para visualizar o plano de testes do projeto](https://docs.google.com/spreadsheets/d/1zku7M4rGdRLX32uIreZFBYQzo-tcYPgKLh6cyLSQETw/edit?usp=sharing)
+
+## Apresentação final
+
+[Clique aqui para visualizar o arquivo de apresentação final do projeto](https://docs.google.com/presentation/d/1E2y09DQG028qIUpwRhuNc2xime8c_vuQOhY95nE0JNE/edit?usp=sharing)
+
 ## Referência / consulta de códigos
 
 VALNEY, Mário. **Como colocar o login do Google no meu site?**. Mário Valney, 2015. Disponível em: <[https://mariovalney.com/como-colocar-o-login-do-google-no-meu-site/](http://https://mariovalney.com/como-colocar-o-login-do-google-no-meu-site/ "https://mariovalney.com/como-colocar-o-login-do-google-no-meu-site/")>. Acesso em: 10 julho 2021.
