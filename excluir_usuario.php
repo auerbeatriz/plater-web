@@ -5,7 +5,7 @@ include_once("authentication.php");
 
 $con = pg_connect(getenv("DATABASE_URL"));
 
-if(!is_null($username) && !is_null($senha)) {
+if(isset($_POST['username']) && !is_null($senha)) {
     if(authentication($username, $senha, $con)) {
         $result = pg_query($con, "
         BEGIN;
@@ -27,7 +27,7 @@ if(!is_null($username) && !is_null($senha)) {
 }
 else {
     $response['success'] = 0;
-    $response['success'] = "Faltam parâmetros";
+    $response['message'] = "Faltam parâmetros";
 }
 
 pg_close($con);
