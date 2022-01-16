@@ -5,8 +5,9 @@ include_once("authentication.php");
 
 $con = pg_connect(getenv("DATABASE_URL"));
 
-if(isset($_POST['username']) && !is_null($senha)) {
+if(!is_null($email) && !is_null($senha) && isset($_POST['username'])) {
     if(authentication($username, $senha, $con)) {
+        $username = trim($_POST['username']);
         $result = pg_query($con, "
         BEGIN;
         DELETE FROM usuario_favorita_receita WHERE fk_usuario_username='$username';
