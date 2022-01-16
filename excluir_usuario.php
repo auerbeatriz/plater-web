@@ -6,7 +6,7 @@ include_once("authentication.php");
 $con = pg_connect(getenv("DATABASE_URL"));
 
 if(!is_null($email) && !is_null($senha) && isset($_POST['username'])) {
-    if(authentication($username, $senha, $con)) {
+    if(authentication($email, $senha, $con)) {
         $username = trim($_POST['username']);
         $result = pg_query($con, "
         BEGIN;
@@ -24,6 +24,7 @@ if(!is_null($email) && !is_null($senha) && isset($_POST['username'])) {
     }
     else {
         $response['success'] = 0;
+        $response['message'] = "Não foi possível fazer a autenticação do usuário.";
     }
 }
 else {
