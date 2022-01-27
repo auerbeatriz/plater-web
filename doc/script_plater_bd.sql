@@ -294,3 +294,5 @@ values (1, 'Em uma tigela grande, misture a farinha, o sal, o fermento e o açú
 	(3, 'Em uma tigela separada, bata os ovos. Acrescente o leite, a manteiga e a baunilha. Despeje a mistura de leite na mistura de farinha. Bata com um fouet até misturar.', 2),
 	(4, 'Coloque a massa na máquina de waffle pré-aquecida. Cozinhe os waffles até dourarem e ficarem crocantes. Sirva imediatamente.', 2);
 
+update receita set multimidia='https://res.cloudinary.com/plater/image/upload/v1643248921/recipes/IMG_20190717_170519408_HDR_1_l85j4k.png' where id_receita =5;
+update receita set multimidia='https://res.cloudinary.com/plater/image/upload/v1643248917/recipes/IMG_20200611_200050872_1_hhzkol.png' where id_receita =7;

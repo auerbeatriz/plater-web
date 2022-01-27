@@ -13,7 +13,8 @@ if(isset($_GET['lastRecipe']) && !is_null($email) && !is_null($senha)) {
 		$query = "SELECT id_receita, titulo_receita, descricao_receita, tempo_preparo, rendimento, tipo_rendimento.tipo_rendimento, categoria.id_categoria, categoria.descricao as categoria, multimidia, tipo_multimidia  FROM receita
 		INNER JOIN categoria ON receita.fk_categoria_id_categoria = categoria.id_categoria
 		INNER JOIN tipo_rendimento ON receita.fk_tipo_rendimento_id_tipo_rendimento = tipo_rendimento.id_tipo_rendimento
-		WHERE id_receita > '$lastRecipe';";
+		WHERE id_receita > '$lastRecipe'
+		ORDER BY id_receita;";
 		$result = pg_query($con, $query);
 		
 		//	se existirem receitas no bd, eles serão armazenados na chave "recipes" de $response e a chave "success" receberá o valor 1
