@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+@font-face {
+    font-family: 'Sweet Buddy';
+    src: url('../fontes/Sweet Buddy.otf') format('opentype'),
+        url('../fontes/Sweet Buddy.ttf') format('truetype'),
+        url('../fontes/Sweet Buddy.eot') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+#fullscreen {
+    width: 100vw;
+    height: 100vh;
+}
+#img1 {
+    height: 100vh;
+    margin-top: -6vh;
+
+    position: static;
+    left: 0;
+    top: 0;
+}
+
+#img2 {
+    height: 145vh;
+
+    margin-top: -113vh;
+    margin-right: -22vw;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#mockup {
+    height: 80vh;
+    
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    margin-top: 7vh;
+    margin-left: 15vw;
+}
+
+#begging {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    margin-bottom: 18vh;
+    margin-left: 16vw;
+
+    color: #FF8040;
+}
+
+#favorite {
+    height: 15vh;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    margin-bottom: 12vh;
+    margin-left: 26.7vw;
+}
+
+#welcome {
+    font-family: 'Dancing Script', cursive;
+    font-size: 57px;
+    color: #404040;
+
+
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    margin-right: 5vw;
+    margin-top: 2.5vh;
+}
+
+#plater {
+    font-family: 'Sweet Buddy';
+    font-size: 110px;
+    font-weight: normal;
+    color: #FF8040;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    margin-top: 8.5vh;
+    margin-right: 5vw;
+}
+
+h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+}
+
+.icons {
+    height: 9vh;
+
+    margin-right: 2vw;
+    margin-top: -2vh;
+}
+
+#info {
+    width: 65vw;
+
+    text-align: justify;
+
+    top: 0;
+    position: absolute;
+
+    margin-left: 30vw;
+    margin-top: 17.5vh;
+    margin-bottom: 3vh;
+}
+
+#links {
+    text-align: center;
+    align-items: center;
+    margin-top: -8vh;
+    margin-left: 22vw;
+}
+
+.baixe {
+    text-align: center;
+    align-items: center;
+    display: inline-block;
+
+    margin-right: 8vw;
+}
+
+.logo {
+    height: 7vh;
+}
+
+.link {
+   float: right;
+   margin-top: 2vh;
+   margin-left: 0.6vw;
+}
+
+a:link {
+    color: #404040;
+}
+a:visited {
+    color: #FF8040;
+}
