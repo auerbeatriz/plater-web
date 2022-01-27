@@ -20,15 +20,22 @@
 body {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
+    margin: 0;
+}
+#commargem {
+    margin: 10px;
 }
 
 #fullscreen {
     width: 100vw;
     height: 100vh;
+    background-image: url("../imagens/wood-texture.jpg");
+    margin: 0;
 }
+
 #img1 {
     height: 100vh;
-    margin-top: -6vh;
+    margin-top: -2.4vh;
 
     position: static;
     left: 0;
@@ -36,10 +43,7 @@ body {
 }
 
 #img2 {
-    height: 145vh;
-
-    margin-top: -113vh;
-    margin-right: -22vw;
+    height: 15vh;
 
     position: absolute;
     right: 0;
@@ -62,8 +66,8 @@ body {
     left: 0;
     bottom: 0;
 
-    margin-bottom: 18vh;
-    margin-left: 16vw;
+    margin-bottom: 20vh;
+    margin-left: 18.5vw;
 
     color: #FF8040;
 }
@@ -74,8 +78,8 @@ body {
     left: 0;
     bottom: 0;
 
-    margin-bottom: 12vh;
-    margin-left: 26.7vw;
+    margin-bottom: 18.5vh;
+    margin-left: 32vw;
 }
 
 #welcome {
