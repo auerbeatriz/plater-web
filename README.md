@@ -83,7 +83,7 @@ Plater é um aplicativo móvel que permite aos usuários, por meio de cadastro e
 
 ## Apresentação final
 
-[Clique aqui para visualizar o arquivo de apresentação final do projeto](https://docs.google.com/presentation/d/1E2y09DQG028qIUpwRhuNc2xime8c_vuQOhY95nE0JNE/edit?usp=sharing)
+[Clique aqui para visualizar o arquivo de apresentação final do projeto](https://github.com/auerbeatriz/plater-web/blob/9a23c071d6d3a584817a98dcf23af19d3041ee38/doc/Apresenta%C3%A7%C3%A3o%20Plater.pptx)
 
 ## Referência / consulta de códigos
 
