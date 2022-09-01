@@ -21,6 +21,8 @@ Existem ainda infinitas outras funcionalidades em nossa mente que sonhamos em im
 
 [Clique aqui para ver o arquivo de apresentação do tema.](https://github.com/auerbeatriz/plater-web/blob/761f14a4abced02bab9ba4e162661bf168d248aa/doc/definicaotema.pdf)
 
+[Clique aqui para assistir o vídeo de apresentação do projeto final](https://drive.google.com/file/d/1DBgFsR6pxvdKVMma_g4mRPqD4mgJ8LnG/view)
+
 *Durante todo o percurso até aqui, várias funcionalidades tiveram que ter a sua implementação paralisada, por isso há mais funcionalidades previstas na apresentação do projeto, que é o que o **Plater** é de fato, do que o que será implementado como projeto integrador.*
 
 ## Project Model Canvas (PMC)
